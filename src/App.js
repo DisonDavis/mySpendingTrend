@@ -1,23 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+import SpendingEntry from './pages/SpendingEntry';
+import SpendingSummary from './pages/SpendingSummary';
+import { useState } from 'react';
+import { TransactionProvider } from './contexts/Transactions';
+
 function App() {
+
+ 
+
   return (
+    
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1 className='text-white bg-info p-3'>my <em><u><b>spending</b></u></em> trend</h1>
+      <TransactionProvider>
+        <SpendingEntry></SpendingEntry>
+       <SpendingSummary></SpendingSummary>
+      </TransactionProvider>
+
     </div>
   );
 }
