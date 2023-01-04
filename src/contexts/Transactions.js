@@ -5,7 +5,6 @@ const TransactionContext = React.createContext()
 export const TransactionConsumer = () => {
   return useContext(TransactionContext)
 }
-//some changes
 
 export const TransactionProvider = ({ children }) => {
   const [transactions, setTransactions] = useState([])
