@@ -8,9 +8,15 @@ import { TransactionConsumer } from '../contexts/Transactions';
 
 
 const SpendingEntry = () => {
-    const [form, setForm] = useState({ amount: '', reason: '', category: '' })
+
+const todayDate=new Date();
+
+    const [form, setForm] = useState({ amount: '', reason: '', category: '',timeStamp:todayDate })
     const [errors, setErrors] = useState({ amount: '', reason: '', category: '' })
     const {  addNewTransaction } = TransactionConsumer();
+
+
+   
 
     const setField = (e) => {
         setForm({
@@ -52,7 +58,9 @@ const SpendingEntry = () => {
     }
 
     return (
-        <Form>
+        <>
+
+         <Form>
             <Row className='justify-content-center mt-5'>
                 <h4>Enter the spending</h4>
                 <Form.Group as={Col} xs={12} sm={6} md={4} controlId="amount">
@@ -90,6 +98,8 @@ const SpendingEntry = () => {
             </div>
 
         </Form>
+        </>
+       
     )
 }
 export default SpendingEntry

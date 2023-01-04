@@ -1,0 +1,10 @@
+.sContainer{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+   
+}
+.sButton{
+    float: left;
+    margin-top: 30px;
+}
