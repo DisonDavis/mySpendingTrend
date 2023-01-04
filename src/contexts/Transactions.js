@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
+import { AddNewSpending, GetAllTransactions } from '../db/TransactionsCRUDAPIs'
 
 const TransactionContext = React.createContext()
 
@@ -9,12 +10,20 @@ export const TransactionConsumer = () => {
 export const TransactionProvider = ({ children }) => {
   const [transactions, setTransactions] = useState([])
 
-  const addNewTransaction = (newSpending) => {
-    setTransactions((arr) => [...arr, newSpending])
+  const addNewTransaction = async (newSpending) => {
+    if (await AddNewSpending(newSpending))
+      setTransactions((arr) => [...arr, newSpending])
+  }
+
+  const setInitialTransaction = async () => {
+    var allTransactions = await GetAllTransactions()
+    setTransactions(allTransactions)
   }
 
   return (
-    <TransactionContext.Provider value={{ transactions, addNewTransaction }}>
+    <TransactionContext.Provider
+      value={{ transactions, addNewTransaction, setInitialTransaction }}
+    >
       {children}
     </TransactionContext.Provider>
   )
